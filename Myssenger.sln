@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Domain", "Myssenger.Domain\Myssenger.Domain.csproj", "{766DA87C-341E-460B-B62D-20790D65CA6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Shared", "Myssenger.Shared\Myssenger.Shared.csproj", "{92C2B289-044D-4243-B280-7777280AACA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Architecture", "Myssenger.Architecture\Myssenger.Architecture.csproj", "{2F6EA494-6848-4A39-8A20-2121C0F8D63D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{766DA87C-341E-460B-B62D-20790D65CA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{766DA87C-341E-460B-B62D-20790D65CA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{766DA87C-341E-460B-B62D-20790D65CA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{766DA87C-341E-460B-B62D-20790D65CA6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92C2B289-044D-4243-B280-7777280AACA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92C2B289-044D-4243-B280-7777280AACA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92C2B289-044D-4243-B280-7777280AACA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92C2B289-044D-4243-B280-7777280AACA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F6EA494-6848-4A39-8A20-2121C0F8D63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F6EA494-6848-4A39-8A20-2121C0F8D63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F6EA494-6848-4A39-8A20-2121C0F8D63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F6EA494-6848-4A39-8A20-2121C0F8D63D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
