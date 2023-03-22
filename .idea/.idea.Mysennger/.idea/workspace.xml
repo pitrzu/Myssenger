@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="764a7940-9861-4c93-a866-ee9ebb7e0aab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Mysennger/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Architecture/MsgContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Architecture/Myssenger.Architecture.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/Chat.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/entities/Message.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/exceptions/ChatCreationException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/exceptions/ContentLengthException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/exceptions/MessageNotFoundException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/exceptions/TitleLengthException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/exceptions/UserBannedException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/exceptions/UserNotParticipatingException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/exceptions/UserRemovalException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/vo/ChatId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/vo/Content.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/vo/MessageId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Chats/vo/Title.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Myssenger.Domain.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Users/User.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Users/vo/Email.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Users/vo/Login.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Users/vo/Password.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Domain/Users/vo/UserId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Shared/AggregateRoot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Shared/Entity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.Shared/ValueObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myssenger.sln" afterDir="false" />
-    </list>
+    <list default="true" id="764a7940-9861-4c93-a866-ee9ebb7e0aab" name="Changes" comment="Created" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +10,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2NMy9fjwmeUWBrFLn9yiGzSauUQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -70,16 +43,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1679488097962</updated>
-      <workItem from="1679488098979" duration="5132000" />
+      <workItem from="1679488098979" duration="5437000" />
     </task>
+    <task id="LOCAL-00001" summary="Created">
+      <created>1679493504808</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679493504808</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Created" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
