@@ -4,7 +4,6 @@ using Mysennger.Domain.Chats.exceptions;
 using Mysennger.Domain.Chats.vo;
 using Myssenger.Shared;
 using OneOf.Monads;
-using OneOf.Types;
 
 namespace Mysennger.Domain.Chats;
 
@@ -58,6 +57,7 @@ public sealed class Chat : AggregateRoot<ChatId>
             return new UserBannedException(userId, Id);
         _participants.Add(userId);
         
+        
         return userId;
     }
 
@@ -69,6 +69,7 @@ public sealed class Chat : AggregateRoot<ChatId>
             return new UserRemovalException(_participants.Count);
         _participants.Remove(userId);
 
+        
         return userId;
     }
 
@@ -79,11 +80,13 @@ public sealed class Chat : AggregateRoot<ChatId>
         _participants.Remove(userId);
         _bannedUsers.Add(userId);
 
+        
         return userId;
     }
 
     public void UnBanUser(UserId userId)
     {
+        
         _bannedUsers.Remove(userId);
     }
 

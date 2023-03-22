@@ -18,15 +18,9 @@ public class MsgContext : DbContext
         _mediator = mediator;
     }
 
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        base.OnConfiguring(optionsBuilder);
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(MsgContext).Assembly);
     }
 
     public override int SaveChanges()

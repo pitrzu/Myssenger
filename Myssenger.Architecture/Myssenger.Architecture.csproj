@@ -13,7 +13,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Myssenger.Domain\Myssenger.Domain.csproj" />
       <ProjectReference Include="..\Myssenger.Shared\Myssenger.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="DependencyInjection" />
     </ItemGroup>
 
 </Project>

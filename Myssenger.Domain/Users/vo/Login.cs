@@ -11,7 +11,6 @@ public class Login : ValueObject
     {
         Value = value;
     }
-
     
     public string Value { get; }
     
