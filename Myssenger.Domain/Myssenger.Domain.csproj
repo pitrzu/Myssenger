@@ -16,4 +16,11 @@
       <PackageReference Include="OneOf.Monads" Version="1.21.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Posts\Events" />
+      <Folder Include="Subriddots\Entities" />
+      <Folder Include="Subriddots\Events" />
+      <Folder Include="Subriddots\Exceptions" />
+    </ItemGroup>
+
 </Project>

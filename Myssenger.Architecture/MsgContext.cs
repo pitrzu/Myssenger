@@ -47,10 +47,9 @@ public class MsgContext : DbContext
         foreach (var entity in entities)
         {
             foreach (var domainEvent in entity.Events)
-                _mediator.Publish(domainEvent);
+                _mediator.Publish(domainEvent, cancellationToken);
             entity.ClearEvents(); 
         }
-        
         return base.SaveChangesAsync(cancellationToken);
     }
 }

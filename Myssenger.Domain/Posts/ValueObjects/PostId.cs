@@ -1,24 +1,24 @@
 using Myssenger.Shared;
 
-namespace Mysennger.Domain.Chats.vo;
+namespace Mysennger.Domain.Posts.ValueObjects;
 
-public class ChatId : ValueObject
+public class PostId : ValueObject
 {
-    private ChatId(Guid value)
+    public Guid Value { get; }
+
+    private PostId(Guid value)
     {
         Value = value;
     }
-    
-    public Guid Value { get; }
-    
+
     protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Value;
     }
 
-    public static ChatId Create(Guid value)
+    public static PostId Create(Guid value)
         => new(value);
 
-    public static ChatId CreateUnique()
+    public static PostId CreateUnique()
         => new(Guid.NewGuid());
 }

@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Shared", "Mysseng
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Architecture", "Myssenger.Architecture\Myssenger.Architecture.csproj", "{2F6EA494-6848-4A39-8A20-2121C0F8D63D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Api", "Myssenger.Api\Myssenger.Api.csproj", "{7B0F3DAC-340A-41CA-8C8E-B76A30B9F77D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{2F6EA494-6848-4A39-8A20-2121C0F8D63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F6EA494-6848-4A39-8A20-2121C0F8D63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F6EA494-6848-4A39-8A20-2121C0F8D63D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B0F3DAC-340A-41CA-8C8E-B76A30B9F77D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B0F3DAC-340A-41CA-8C8E-B76A30B9F77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B0F3DAC-340A-41CA-8C8E-B76A30B9F77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B0F3DAC-340A-41CA-8C8E-B76A30B9F77D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

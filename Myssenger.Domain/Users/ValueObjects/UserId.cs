@@ -1,16 +1,16 @@
 using Myssenger.Shared;
 
-namespace Mysennger.Domain.Chats.vo;
+namespace Mysennger.Domain.Users.ValueObjects;
 
 public class UserId : ValueObject
 {
+    public Guid Value { get; }
+
     private UserId(Guid value)
     {
         Value = value;
     }
-    
-    public Guid Value { get; }
-    
+
     protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Value;

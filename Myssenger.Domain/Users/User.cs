@@ -1,28 +1,14 @@
-using Mysennger.Domain.Chats.vo;
-using Mysennger.Domain.Users.vo;
+using Mysennger.Domain.Subriddots.ValueObjects;
+using Mysennger.Domain.Users.ValueObjects;
 using Myssenger.Shared;
 
 namespace Mysennger.Domain.Users;
 
 public class User : AggregateRoot<UserId>
 {
-    private User(UserId id, Login login, Email email, Password password) : base(id)
-    {
-        Login = login;
-        Email = email;
-        Password = password;
-    }
-    
-    public Login Login { get; }
-    public Email Email { get; }
-    public Password Password { get; }
+    private readonly ICollection<SubriddotId> _subscribedTo = new List<SubriddotId>();
 
-    public static User Create(Login login, Email email, Password password)
+    protected User(UserId id) : base(id)
     {
-        return new User(
-            UserId.CreateUnique(),
-            login,
-            email,
-            password);
     }
 }
