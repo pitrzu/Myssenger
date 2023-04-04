@@ -21,6 +21,7 @@
       <Folder Include="Subriddots\Entities" />
       <Folder Include="Subriddots\Events" />
       <Folder Include="Subriddots\Exceptions" />
+      <Folder Include="Users\Entities" />
     </ItemGroup>
 
 </Project>

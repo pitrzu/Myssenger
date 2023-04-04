@@ -13,13 +13,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Myssenger.Application\Myssenger.Application.csproj" />
       <ProjectReference Include="..\Myssenger.Domain\Myssenger.Domain.csproj" />
       <ProjectReference Include="..\Myssenger.Shared\Myssenger.Shared.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="DependencyInjection" />
-      <Folder Include="Repositories" />
     </ItemGroup>
 
 </Project>

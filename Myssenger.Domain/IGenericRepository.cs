@@ -6,11 +6,14 @@ public interface IGenericRepository<T, in TId>
     where T : AggregateRoot<TId>
     where TId : ValueObject
 {
-    public T? One(TId id);
-    public ICollection<T> All();
+    public Task<T?> One(TId id);
+    public Task<ICollection<T>> All();
 
-    public T Add(T entity);
-    public T Update(T entity);
-
-    public int Remove(TId id);
+    public Task Add(T entity);
+    public Task AddAll(IEnumerable<T> entities);
+    
+    public Task Update(TId id, T entity);
+    
+    public Task Remove(TId id);
+    public Task RemoveAll(IEnumerable<TId> ids);
 }

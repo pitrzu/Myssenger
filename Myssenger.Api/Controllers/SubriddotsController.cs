@@ -1,40 +1,119 @@
-using Microsoft.AspNetCore.Http.HttpResults;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Mysennger.Domain.Subriddots.ValueObjects;
+using Myssenger.Api.Dtos;
+using Myssenger.Api.Queries;
+using Myssenger.Api.Queries.Subriddots;
 
 namespace Myssenger.Api.Controllers;
 
-[Route("[Controller]")]
+[Authorize]
 [ApiController]
-public class SubriddotsController
+[Route("[Controller]")]
+public sealed class SubriddotsController
 {
-    public IActionResult GetById(SubriddotId id)
+    private readonly IMediator _mediator;
+
+    public SubriddotsController(IMediator mediator)
     {
-        return new OkObjectResult(new { });
+        _mediator = mediator;
     }
 
-    public IActionResult GetByNameLike(string name)
+    [HttpGet("id/{subriddotId:guid}")]
+    [ProducesResponseType(type: typeof(GetSubriddotDto), statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetOneById([FromRoute] Guid subriddotId)
     {
-        return new OkObjectResult(new { });
-    }
-    
-    public IActionResult GetAll()
-    {
-        return new OkObjectResult(new { });
-    }
-    
-    public IActionResult Create()
-    {
-        return new CreatedResult("hashjsh", new {});
+        var query = new GetOneByIdQuery(subriddotId);
+        var result = await _mediator.Send(query);
+
+        return result.Match<IActionResult>(
+            error => new NotFoundObjectResult(error.Value),
+            success => new OkObjectResult(success.Value)
+        );
     }
 
-    public IActionResult Update()
+    [HttpGet("name/{name}")]
+    [ProducesResponseType(type: typeof(IEnumerable<GetSubriddotDto>), statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetAllMatchingName([FromRoute] string name)
     {
-        return new OkResult();
+        var query = new GetAllByNameQuery(name);
+        var result = await _mediator.Send(query);
+
+        return result.Count() switch
+        {
+            0 => new NotFoundResult(),
+            _ => new OkObjectResult(result)
+        };
     }
 
-    public IActionResult Remove(SubriddotId subriddotId)
+    [HttpPost]
+    [ProducesResponseType(statusCode: StatusCodes.Status201Created)]
+    [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> CreateSubriddot([FromBody] CreateSubriddotDto dto)
     {
-        return new OkResult();
+        /* TODO Should add authentication
+         * TODO Should add authorization
+         * TODO Should map the dto to the entity
+         * TODO Should persist the entity to db and return its id as its route*/
+        throw new NotImplementedException();
+    }
+
+    [HttpPut("{subriddotId:guid}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(statusCode: StatusCodes.Status201Created)]
+    [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> UpdateSubriddot([FromRoute] Guid subriddotId, [FromBody] UpdateSubriddotDto dto)
+    {
+        /* TODO Should add authentication
+         * TODO Should add authorization
+         * TODO Should map the dto to the entity
+         * TODO Should update or persist the entity to the db*/
+        throw new NotImplementedException();
+    }
+
+    [HttpDelete("{subriddotId:guid}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> RemoveSubriddot([FromRoute] Guid subriddotId)
+    {
+        /* TODO Should add authentication
+         * TODO Should add authorization
+         * TODO Should remove the entity from DB*/
+        throw new NotImplementedException();
+    }
+
+    [HttpPost("/promote/{userId:guid}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> PromoteModerator([FromBody] Guid userId)
+    {
+        /* TODO Should add authentication
+         * TODO Should add authorization
+         * TODO Should promote user to moderator*/
+        throw new NotImplementedException();
+    }
+
+    [HttpPost("/demote/{userId:guid}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> DemoteFromModerator([FromBody] Guid userId)
+    {
+        /* TODO Should add authentication
+         * TODO Should add authorization
+         * TODO Should demote user to moderator*/
+        throw new NotImplementedException();
+    }
+
+    [HttpGet("{subriddotId:guid}/posts")]
+    [ProducesResponseType(type: typeof(IEnumerable<GetPostDto>), statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetPosts([FromBody] Guid subriddotId)
+    {
+        /* TODO Should add authentication
+         * TODO Should add authorization
+         * TODO Should retrieve subriddot posts from database */
+        throw new NotImplementedException();
     }
 }

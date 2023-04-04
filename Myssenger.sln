@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Architecture", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Api", "Myssenger.Api\Myssenger.Api.csproj", "{7B0F3DAC-340A-41CA-8C8E-B76A30B9F77D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Tests", "Myssenger.Tests\Myssenger.Tests.csproj", "{F740765C-349C-4346-A83F-196E3532B46C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myssenger.Application", "Myssenger.Application\Myssenger.Application.csproj", "{F933FB1B-E540-45A1-A7D6-7D31E854DC6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{7B0F3DAC-340A-41CA-8C8E-B76A30B9F77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B0F3DAC-340A-41CA-8C8E-B76A30B9F77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B0F3DAC-340A-41CA-8C8E-B76A30B9F77D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F740765C-349C-4346-A83F-196E3532B46C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F740765C-349C-4346-A83F-196E3532B46C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F740765C-349C-4346-A83F-196E3532B46C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F740765C-349C-4346-A83F-196E3532B46C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F933FB1B-E540-45A1-A7D6-7D31E854DC6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F933FB1B-E540-45A1-A7D6-7D31E854DC6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F933FB1B-E540-45A1-A7D6-7D31E854DC6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F933FB1B-E540-45A1-A7D6-7D31E854DC6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

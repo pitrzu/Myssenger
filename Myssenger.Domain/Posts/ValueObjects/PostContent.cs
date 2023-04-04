@@ -3,9 +3,9 @@ using OneOf.Monads;
 
 namespace Mysennger.Domain.Posts.ValueObjects;
 
-public class Content : ValueObject
+public class PostContent : ValueObject
 {
-    private Content(string value)
+    private PostContent(string value)
     {
         Value = value;
     }
@@ -16,11 +16,11 @@ public class Content : ValueObject
         yield return Value;
     }
 
-    public static Result<Exception, Content> TryCreate(string value)
+    public static Result<Exception, PostContent> TryCreate(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
             return new Exception();
 
-        return new Content(value);
+        return new PostContent(value);
     }
 }

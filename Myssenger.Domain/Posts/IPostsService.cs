@@ -1,6 +1,9 @@
-namespace Mysennger.Domain;
+using Mysennger.Domain.Posts.Exceptions;
+using OneOf.Monads;
 
-public interface IPostsService
+namespace Mysennger.Domain.Posts;
+
+public interface IPostsService : IDomainService
 {
-    
+    public Result<PostCreationException, Post> CreatePost();
 }

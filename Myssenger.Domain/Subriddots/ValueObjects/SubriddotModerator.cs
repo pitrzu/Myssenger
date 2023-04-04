@@ -3,22 +3,21 @@ using Myssenger.Shared;
 
 namespace Mysennger.Domain.Subriddots.ValueObjects;
 
-public class Moderator : ValueObject
+public class SubriddotModerator : ValueObject
 {
-    private Moderator(UserId userId)
+    private SubriddotModerator(UserId userId)
     {
         UserId = userId;
     }
 
-    
     public UserId UserId { get; }
-    public DateTime PromotedAt { get; } = DateTime.UtcNow;
+    public DateTimeOffset PromotedAt { get; } = DateTime.Now;
 
     protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return UserId;
     }
 
-    public static Moderator Create(UserId userId)
+    public static SubriddotModerator Create(UserId userId)
         => new(userId);
 }

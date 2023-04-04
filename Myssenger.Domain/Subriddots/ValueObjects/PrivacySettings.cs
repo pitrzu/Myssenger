@@ -22,13 +22,11 @@ public abstract class PrivacySettings : ValueObject
         public override bool IsPrivate => false;
         public override bool IsHidden => false;
     }
-
     private class PrivateSettings : PrivacySettings
     {
         public override bool IsPrivate => true;
         public override bool IsHidden => false;
     }
-
     private class InviteOnlySettings : PrivacySettings
     {
         public override bool IsPrivate => true;
