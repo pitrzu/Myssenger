@@ -11,7 +11,7 @@ public sealed class Post : AggregateRoot<PostId>
     private readonly ICollection<Rating> _ratings = new List<Rating>();
     private readonly ICollection<Comment> _comments = new List<Comment>();
 
-    internal Post(
+    private Post(
         PostId id,
         UserId creator,
         SubriddotId subriddot,
@@ -31,6 +31,16 @@ public sealed class Post : AggregateRoot<PostId>
     public PostTitle Title { get; set; }
     public PostContent Content { get; set; }
 
+    internal static Post Create(UserId creator, SubriddotId subriddot, PostTitle title, PostContent content)
+    {
+        return new(
+            id: PostId.CreateUnique(),
+            creator: creator,
+            subriddot: subriddot,
+            title: title,
+            content: content);
+    }
+    
     internal void Rate(UserId userId, Rating.Type type)
     {
         RemoveRating(userId);

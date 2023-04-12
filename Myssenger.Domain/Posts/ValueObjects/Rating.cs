@@ -11,10 +11,10 @@ public class Rating : ValueObject
         Downvote
     }
 
-    private Rating(UserId creator, Type type)
+    private Rating(UserId creator, Type ratingType)
     {
         Creator = creator;
-        RatingType = type;
+        RatingType = ratingType;
     }
     
     protected override IEnumerable<object?> GetEqualityComponents()
