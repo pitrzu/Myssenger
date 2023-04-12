@@ -2,15 +2,15 @@ using Myssenger.Shared;
 
 namespace Mysennger.Domain.Subriddots.ValueObjects;
 
-public class SubriddotId : ValueObject
+public sealed class SubriddotId : ValueObject
 {
-    public Guid Value { get; }
-
     private SubriddotId(Guid value)
     {
         Value = value;
     }
-
+    
+    public Guid Value { get; }
+    
     protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Value;

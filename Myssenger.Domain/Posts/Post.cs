@@ -1,47 +1,96 @@
-using System.Collections.Immutable;
 using Mysennger.Domain.Posts.Entities;
 using Mysennger.Domain.Posts.ValueObjects;
+using Mysennger.Domain.Subriddots.ValueObjects;
 using Mysennger.Domain.Users.ValueObjects;
 using Myssenger.Shared;
 
 namespace Mysennger.Domain.Posts;
 
-public class Post : AggregateRoot<PostId>
+public sealed class Post : AggregateRoot<PostId>
 {
-    private readonly ICollection<Comment> _comments = new List<Comment>();
     private readonly ICollection<Rating> _ratings = new List<Rating>();
-    
-    private Post(PostId id,
+    private readonly ICollection<Comment> _comments = new List<Comment>();
+
+    internal Post(
+        PostId id,
         UserId creator,
-        PostContent postContent,
-        ICollection<Tag> tags) : base(id)
+        SubriddotId subriddot,
+        PostTitle title,
+        PostContent content) : base(id)
     {
         Creator = creator;
-        PostContent = postContent;
-        Tags = tags;
+        Subriddot = subriddot;
+        Title = title;
+        Content = content;
     }
     
     public UserId Creator { get; }
-    public DateTime CreatedAt { get; } = DateTime.UtcNow;
-    public PostContent PostContent { get; set; }
-    public IReadOnlyCollection<Comment> Comments => _comments.ToImmutableList();
-    public ICollection<Tag> Tags { get; set; } 
+    public DateTimeOffset CreatedAt { get; } = DateTimeOffset.Now;
+    
+    public SubriddotId Subriddot { get; }
+    public PostTitle Title { get; set; }
+    public PostContent Content { get; set; }
 
-    internal static Post CreateWithId(
-        PostId postId,
-        UserId userId,
-        PostContent postContent,
-        ICollection<Tag> tags)
+    internal void Rate(UserId userId, Rating.Type type)
     {
-        return new Post(postId, userId, postContent, tags);
+        RemoveRating(userId);
+        
+        var rating = Rating.Create(userId, type);
+        _ratings.Add(rating);
+    }
+    internal void RemoveRating(UserId userId)
+    {
+        var rating = _ratings.FirstOrDefault(rating => rating.Creator == userId);
+        if (rating is null)
+            return;
+
+        _ratings.Remove(rating);
     }
 
-    internal static Post Create(UserId userId, PostContent postContent, ICollection<Tag> tags)
+    //Comments
+    internal void CreateComment(UserId commentCreator, CommentContent content, CommentId? parent = null)
     {
-        return CreateWithId(
-            postId: PostId.CreateUnique(),
-            userId: userId,
-            postContent: postContent,
-            tags: tags);
+        var comment = Comment.Create(commentCreator, content, parent);
+        _comments.Add(comment);
+    }
+    internal void UpdateComment(CommentId commentId, CommentContent content)
+    {
+        var commentToUpdate = _comments.FirstOrDefault(comment => comment.Id == commentId);
+        if (commentToUpdate is null)
+            return;
+
+        commentToUpdate.Content = content;
+    }
+    internal void RemoveComment(CommentId commentId)
+    {
+        var commentToRemove = _comments.FirstOrDefault(comment => comment.Id == commentId);
+        if (commentToRemove is null)
+            return;
+
+        _comments.Remove(commentToRemove);
+    }
+
+    internal void RateComment(CommentId commentId, UserId userId, Rating.Type type)
+    {
+        var commentToUpvote = _comments.FirstOrDefault(comment => comment.Id == commentId);
+        if(commentToUpvote is null)
+            return;
+        
+        RemoveCommentRating(commentId, userId);
+
+        var rating = Rating.Create(userId, type);
+        commentToUpvote._ratings.Add(rating);
+    }
+    internal void RemoveCommentRating(CommentId commentId, UserId userId)
+    {
+        var commentToRemoveRating = _comments.FirstOrDefault(comment => comment.Id == commentId);
+        if (commentToRemoveRating is null)
+            return;
+
+        var rating = commentToRemoveRating._ratings.FirstOrDefault(rating => rating.Creator == userId);
+        if (rating is null)
+            return;
+
+        commentToRemoveRating._ratings.Remove(rating);
     }
 }

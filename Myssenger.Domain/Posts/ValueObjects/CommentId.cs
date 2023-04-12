@@ -1,16 +1,15 @@
 using Myssenger.Shared;
 
 namespace Mysennger.Domain.Posts.ValueObjects;
-
-public class CommentId : ValueObject
+public sealed class CommentId : ValueObject
 {
-    public Guid Value { get; }
-
     private CommentId(Guid value)
     {
         Value = value;
     }
-
+    
+    public Guid Value { get; }
+    
     protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Value;

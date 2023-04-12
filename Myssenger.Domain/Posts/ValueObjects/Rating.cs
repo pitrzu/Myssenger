@@ -3,25 +3,28 @@ using Myssenger.Shared;
 
 namespace Mysennger.Domain.Posts.ValueObjects;
 
-public sealed class Rating : ValueObject
+public class Rating : ValueObject
 {
-    public Rating(UserId ratedBy, RatingType type)
-    {
-        RatedBy = ratedBy;
-        Type = type;
-    }
-    
-    public enum RatingType
+    public enum Type
     {
         Upvote,
         Downvote
     }
-    
-    public UserId RatedBy { get; }
-    public RatingType Type { get; }
+
+    private Rating(UserId creator, Type type)
+    {
+        Creator = creator;
+        RatingType = type;
+    }
     
     protected override IEnumerable<object?> GetEqualityComponents()
     {
-        yield return RatedBy;
+        yield return Creator;
     }
+
+    public UserId Creator { get; }
+    public Type RatingType { get; }
+
+    public static Rating Create(UserId creator, Type type)
+        => new(creator, type);
 }

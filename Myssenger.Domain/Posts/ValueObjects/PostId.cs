@@ -2,15 +2,15 @@ using Myssenger.Shared;
 
 namespace Mysennger.Domain.Posts.ValueObjects;
 
-public class PostId : ValueObject
+public sealed class PostId : ValueObject
 {
-    public Guid Value { get; }
-
     private PostId(Guid value)
     {
         Value = value;
     }
-
+    
+    public Guid Value { get; }
+    
     protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Value;

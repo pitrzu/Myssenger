@@ -3,7 +3,7 @@ using OneOf.Monads;
 
 namespace Mysennger.Domain.Posts.ValueObjects;
 
-public class PostContent : ValueObject
+public sealed class PostContent : ValueObject
 {
     private PostContent(string value)
     {
@@ -11,6 +11,8 @@ public class PostContent : ValueObject
     }
     
     public string Value { get; }
+
+
     protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Value;
@@ -18,9 +20,6 @@ public class PostContent : ValueObject
 
     public static Result<Exception, PostContent> TryCreate(string value)
     {
-        if (string.IsNullOrWhiteSpace(value))
-            return new Exception();
-
         return new PostContent(value);
     }
 }
