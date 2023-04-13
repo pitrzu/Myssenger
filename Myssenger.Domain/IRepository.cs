@@ -1,8 +1,9 @@
+using Myssenger.Application;
 using Myssenger.Shared;
 
 namespace Mysennger.Domain;
 
-public interface IGenericRepository<T, in TId>
+public interface IRepository<T, in TId>
     where T : AggregateRoot<TId>
     where TId : ValueObject
 {

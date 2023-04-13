@@ -17,7 +17,7 @@ public sealed class PostTitle : ValueObject
         yield return Value;
     }
 
-    public static Result<Exception, PostTitle> TryCreate(string value)
+    public static Result<Exception, PostTitle> CreateOrThrow(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
             return new Exception();

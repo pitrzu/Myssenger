@@ -7,11 +7,12 @@ namespace Mysennger.Domain.Posts.Services;
 
 public sealed class PostsService : IPostsService
 {
-    public Result<Exception, Post> CreatePost(UserId creator, Subriddot subriddot, PostTitle title, PostContent content)
+    public Result<Exception, Post> CreatePost(
+        UserId creator, 
+        Subriddot subriddot,
+        PostTitle title,
+        PostContent content)
     {
-        if (subriddot.BannedUsers.Contains(creator))
-            return new Exception();
-        
         var post = Post.Create(
             creator: creator,
             subriddot: subriddot.Id,

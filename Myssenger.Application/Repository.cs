@@ -1,16 +1,18 @@
+using System.Collections.Immutable;
+using System.Linq.Dynamic.Core;
 using Microsoft.EntityFrameworkCore;
 using Mysennger.Domain;
 using Myssenger.Shared;
 
 namespace Myssenger.Application;
 
-public abstract class DbGenericRepository<T, TId> : IGenericRepository<T, TId>
+public abstract class Repository<T, TId> : IRepository<T, TId>
     where T : AggregateRoot<TId>
     where TId : ValueObject
 {
     protected readonly DbSet<T> DbSet;
 
-    protected DbGenericRepository(DbContext context)
+    protected Repository(DbContext context)
     {
         DbSet = context.Set<T>();
     }

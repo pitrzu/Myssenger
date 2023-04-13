@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using Mysennger.Domain.Posts.Entities;
 using Mysennger.Domain.Posts.ValueObjects;
 using Mysennger.Domain.Subriddots.ValueObjects;
@@ -30,6 +31,8 @@ public sealed class Post : AggregateRoot<PostId>
     public SubriddotId Subriddot { get; }
     public PostTitle Title { get; set; }
     public PostContent Content { get; set; }
+    public IReadOnlyCollection<Rating> Ratings => _ratings.ToImmutableList();
+    public IReadOnlyCollection<Comment> Comments => _comments.ToImmutableList();
 
     internal static Post Create(UserId creator, SubriddotId subriddot, PostTitle title, PostContent content)
     {
@@ -41,14 +44,14 @@ public sealed class Post : AggregateRoot<PostId>
             content: content);
     }
     
-    internal void Rate(UserId userId, Rating.Type type)
+    public void Rate(UserId userId, Rating.Type type)
     {
         RemoveRating(userId);
         
         var rating = Rating.Create(userId, type);
         _ratings.Add(rating);
     }
-    internal void RemoveRating(UserId userId)
+    public void RemoveRating(UserId userId)
     {
         var rating = _ratings.FirstOrDefault(rating => rating.Creator == userId);
         if (rating is null)
@@ -58,12 +61,12 @@ public sealed class Post : AggregateRoot<PostId>
     }
 
     //Comments
-    internal void CreateComment(UserId commentCreator, CommentContent content, CommentId? parent = null)
+    public void Comment(UserId commentCreator, CommentContent content, CommentId? parent = null)
     {
-        var comment = Comment.Create(commentCreator, content, parent);
+        var comment = Entities.Comment.Create(commentCreator, content, parent);
         _comments.Add(comment);
     }
-    internal void UpdateComment(CommentId commentId, CommentContent content)
+    public void UpdateComment(CommentId commentId, CommentContent content)
     {
         var commentToUpdate = _comments.FirstOrDefault(comment => comment.Id == commentId);
         if (commentToUpdate is null)
@@ -71,7 +74,7 @@ public sealed class Post : AggregateRoot<PostId>
 
         commentToUpdate.Content = content;
     }
-    internal void RemoveComment(CommentId commentId)
+    public void RemoveComment(CommentId commentId)
     {
         var commentToRemove = _comments.FirstOrDefault(comment => comment.Id == commentId);
         if (commentToRemove is null)
@@ -80,7 +83,7 @@ public sealed class Post : AggregateRoot<PostId>
         _comments.Remove(commentToRemove);
     }
 
-    internal void RateComment(CommentId commentId, UserId userId, Rating.Type type)
+    public void RateComment(CommentId commentId, UserId userId, Rating.Type type)
     {
         var commentToUpvote = _comments.FirstOrDefault(comment => comment.Id == commentId);
         if(commentToUpvote is null)
@@ -91,7 +94,7 @@ public sealed class Post : AggregateRoot<PostId>
         var rating = Rating.Create(userId, type);
         commentToUpvote._ratings.Add(rating);
     }
-    internal void RemoveCommentRating(CommentId commentId, UserId userId)
+    public void RemoveCommentRating(CommentId commentId, UserId userId)
     {
         var commentToRemoveRating = _comments.FirstOrDefault(comment => comment.Id == commentId);
         if (commentToRemoveRating is null)

@@ -17,7 +17,7 @@ public sealed class CommentContent : ValueObject
         yield return Value;
     }
 
-    public static CommentContent Create(string content)
+    public static CommentContent CreateOrThrow(string content)
     {
         return new(content);
     }
