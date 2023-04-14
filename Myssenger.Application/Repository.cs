@@ -1,5 +1,3 @@
-using System.Collections.Immutable;
-using System.Linq.Dynamic.Core;
 using Microsoft.EntityFrameworkCore;
 using Mysennger.Domain;
 using Myssenger.Shared;
@@ -22,10 +20,13 @@ public abstract class Repository<T, TId> : IRepository<T, TId>
         return await DbSet.FindAsync(id);
     }
 
-    public async Task<ICollection<T>> All()
+    public Task<PaginatedList<T>> All(int? page = null, int? pageSize = null)
     {
-        return await DbSet.ToListAsync();
-    }
+        var nPage = page.GetValueOrDefault(0);
+        var nPageSize = pageSize.GetValueOrDefault(10);
+        
+        return Task.FromResult(new PaginatedList<T>(DbSet, nPage, nPageSize));
+    } 
 
     public async Task Add(T entity)
     { 
@@ -41,8 +42,11 @@ public abstract class Repository<T, TId> : IRepository<T, TId>
     {
         if (entity.Id != id)
             return;
-        if(!await DbSet.AnyAsync(t => t.Id == id))
+        if (!await DbSet.AnyAsync(t => t.Id == id))
+        {
             await Add(entity);
+            return;
+        }
 
         DbSet.Update(entity);
     }

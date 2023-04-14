@@ -8,7 +8,7 @@ public interface IRepository<T, in TId>
     where TId : ValueObject
 {
     public Task<T?> One(TId id);
-    public Task<ICollection<T>> All();
+    public Task<PaginatedList<T>> All(int? page, int? pageSize);
 
     public Task Add(T entity);
     public Task AddAll(IEnumerable<T> entities);
